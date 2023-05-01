@@ -19,13 +19,22 @@ default: &default
 
 development:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: protospace_39234_development
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: protospace_39234_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -49,6 +58,10 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
   database: protospace_39234_production
   username: protospace_39234
   password: <%= ENV['PROTOSPACE_39234_DATABASE_PASSWORD'] %>
+
+
